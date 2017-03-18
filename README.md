@@ -1,5 +1,5 @@
 # WeatherLogger-CORE
-[![Issue Count](https://codeclimate.com/github/geovannyAvelar/WeatherLogger-CORE/badges/issue_count.svg)](https://codeclimate.com/github/geovannyAvelar/WeatherLogger-CORE)
+[![Build Status](https://travis-ci.org/geovannyAvelar/WeatherLogger-CORE.svg?branch=master)](https://travis-ci.org/geovannyAvelar/WeatherLogger-CORE) [![Issue Count](https://codeclimate.com/github/geovannyAvelar/WeatherLogger-CORE/badges/issue_count.svg)](https://codeclimate.com/github/geovannyAvelar/WeatherLogger-CORE) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 Arduino weather logger project REST web service
 
