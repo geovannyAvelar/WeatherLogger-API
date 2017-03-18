@@ -41,7 +41,7 @@ To configure the connection of SocialCRON with your MySQL database, open the fil
 3. With Maven, compile and package with:
 **mvn install -DskipTests**
 
-4. The depedencies will be resolved and a file named wlws-X.war will be generated on target directory, 'X' is the version name. Now you should deploy this .war file on a application server, like Tomcat.
+4. The depedencies will be resolved and a file named weatherlogger-CORE-X.war will be generated on target directory, 'X' is the version name. Now you should deploy this .war file on a application server, like Tomcat.
 
 ## 2 License
 This project is under The MIT License (MIT) terms.
