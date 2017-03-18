@@ -33,15 +33,12 @@ To configure the connection of SocialCRON with your MySQL database, open the fil
 ### 1.3 Build
 
 1. Get the source typing the command:
-<br>
 **git clone https://github.com/geovannyAvelar/WeatherLogger-CORE.git**
 
 2. Enter on project directory:
-<br>
 **cd WeatherLogger-CORE**
 
 3. With Maven, compile and package with:
-<br>
 **mvn install -DskipTests**
 
 4. The depedencies will be resolved and a file named wlws-X.war will be generated on target directory, 'X' is the version name. Now you should deploy this .war file on a application server, like Tomcat.
