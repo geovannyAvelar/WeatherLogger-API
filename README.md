@@ -1,4 +1,5 @@
 # WeatherLogger-CORE
+[![Issue Count](https://codeclimate.com/github/geovannyAvelar/WeatherLogger-CORE/badges/issue_count.svg)](https://codeclimate.com/github/geovannyAvelar/WeatherLogger-CORE)
 
 Arduino weather logger project REST web service
 
