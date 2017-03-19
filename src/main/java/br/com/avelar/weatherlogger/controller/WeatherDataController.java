@@ -8,6 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.acls.domain.BasePermission;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.avelar.weatherlogger.acl.ACLPermissions;
 import br.com.avelar.weatherlogger.data.WeatherData;
 import br.com.avelar.weatherlogger.data.WeatherDataService;
 import br.com.avelar.weatherlogger.data.WeatherDataValidator;
@@ -31,6 +35,9 @@ public class WeatherDataController {
 
   @Autowired
   private WeatherDataValidator weatherDataValidator;
+  
+  @Autowired
+  private ACLPermissions permissions;
 
   @Autowired
   public WeatherDataController(WeatherDataService weatherDataService) {
@@ -44,8 +51,10 @@ public class WeatherDataController {
 
   @CrossOrigin
   @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<Void> saveData(@Valid @RequestBody WeatherData data, Errors errors,
-      HttpHeadersHelper httpHeadersHelper) {
+  public ResponseEntity<Void> saveData(@Valid @RequestBody WeatherData data, 
+                                                           Errors errors, 
+                                                           HttpHeadersHelper httpHeadersHelper,
+                                                           Authentication authentication) {
     HttpHeaders headers = null;
 
     if (errors.hasErrors()) {
@@ -59,6 +68,8 @@ public class WeatherDataController {
 
     WeatherData savedData = weatherDataService.save(data);
     headers = httpHeadersHelper.addLocationHeader("/weather", savedData.getId());
+    permissions.add(authentication, savedData, BasePermission.READ, BasePermission.CREATE, 
+                                                BasePermission.DELETE, BasePermission.WRITE);
     return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
   }
 
@@ -75,6 +86,7 @@ public class WeatherDataController {
   }
 
   @CrossOrigin
+  @PreAuthorize("hasPermission(#id, 'br.com.avelar.weatherlogger.data.WeatherData', 'read')")
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   public ResponseEntity<WeatherData> findData(@PathVariable Long id) {
     WeatherData data = weatherDataService.findOne(id);
@@ -89,8 +101,8 @@ public class WeatherDataController {
   @CrossOrigin
   @RequestMapping(value = "/day/{day}", method = RequestMethod.GET)
   public ResponseEntity<WeatherStatistics> findData(
-      @DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable Date day,
-      WeatherStatistics statistics) {
+              @DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable Date day,
+                                                                    WeatherStatistics statistics) {
     List<WeatherData> weatherData = weatherDataService.findByDay(day);
 
     if (weatherData.isEmpty()) {

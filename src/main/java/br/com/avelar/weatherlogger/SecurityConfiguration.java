@@ -19,11 +19,12 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Autowired
   private UserDetailsService userDetailsService;
-
+  
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
