@@ -28,7 +28,7 @@ This application can be build with JDK 7 or 8. By default, the compilation targe
 #### 1.2.2 Database
 This project use MySQL as relational database management system. You can obtain it [here](https://www.mysql.com/downloads/)
 
-To configure the connection of SocialCRON with your MySQL database, open the file **src/main/resources/application.properties** and fill the properties with your username, password and database URL. The application can generate the database tables automatically, just set the property **spring.jpa.hibernate.ddl-auto** to **update**, don't use this in production.
+To configure the connection with your MySQL database, open the file **src/main/resources/application.properties** and fill the properties with your username, password and database URL. The application can generate the database tables automatically, just set the property **spring.jpa.hibernate.ddl-auto** to **update**, don't use this in production.
 
 ### 1.3 Build
 
