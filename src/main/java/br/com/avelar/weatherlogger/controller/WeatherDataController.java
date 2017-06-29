@@ -92,6 +92,7 @@ public class WeatherDataController {
       return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
     }
 
+    weatherDataService.delete(data);
     return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
   }
 
