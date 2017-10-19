@@ -33,7 +33,7 @@ To configure the connection with your MySQL database, open the file **src/main/r
 ### 1.3 Build
 
 1. Get the source typing the command:
-**git clone https://github.com/geovannyAvelar/WeatherLogger-CORE.git**
+**git clone https://github.com/geovannyAvelar/WeatherLogger-API.git**
 
 2. Enter on project directory:
 **cd WeatherLogger-CORE**
@@ -41,7 +41,7 @@ To configure the connection with your MySQL database, open the file **src/main/r
 3. With Maven, compile and package with:
 **mvn install -DskipTests**
 
-4. The depedencies will be resolved and a file named weatherlogger-CORE-X.war will be generated on target directory, 'X' is the version name. Now you should deploy this .war file on a application server, like Tomcat.
+4. The depedencies will be resolved and a file named weatherlogger-API-X.war will be generated on target directory, 'X' is the version name. Now you should deploy this .war file on a application server, like Tomcat.
 
 ## 2 License
 This project is under The MIT License (MIT) terms.
